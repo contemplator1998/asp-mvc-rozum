@@ -19,7 +19,16 @@
                         <span class="icon-bar"></span>
 
                     </button>
-                    @Html.ActionLink("Robots Custumers", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+
+                    @if (Request.IsAuthenticated)
+                    {
+                        @Html.ActionLink("Robots Custumers", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                    }
+                    </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav nav-bar-container">
+                        @Html.Partial("_LoginPartial")
+                    </ul>
                 </div>
             </div>
         </div>

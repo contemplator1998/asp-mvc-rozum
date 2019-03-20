@@ -1,41 +1,49 @@
 ﻿@using Rozum.Models
+
+
+
 @model IEnumerable<Client>
 @{
     ViewBag.Title = "Rozum Robotics Customers List";
 }
 
-<div>
-    <table class="table" align="center">
-        <tr>
-            <td>
-                @Html.DisplayNameFor(item => item.ClientId)
-            </td>
-            <td>
-                @Html.DisplayNameFor(item => item.Surname)
-            </td>
-            <td>
-                @Html.DisplayNameFor(item => item.Name)
-            </td>
-            <td>
-                @Html.DisplayNameFor(item => item.Company)
-            </td>
-        </tr>
-        @foreach (Client item in Model.OrderBy(i => i.Surname))
-        {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.ClientId)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Surname)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Company)
-        </td>
-    </tr>            
-        }
-    </table>
-</div>
+@if (Request.IsAuthenticated)
+{
+
+    <div>
+        <table class="table" align="center">
+            <tr>
+                <td>
+                    @Html.DisplayNameFor(item => item.ClientId)
+                </td>
+                <td>
+                    @Html.DisplayNameFor(item => item.Surname)
+                </td>
+                <td>
+                    @Html.DisplayNameFor(item => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayNameFor(item => item.Company)
+                </td>
+            </tr>
+            @foreach (Client item in Model.OrderBy(i => i.Surname))
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ClientId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Surname)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Company)
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+
+}
